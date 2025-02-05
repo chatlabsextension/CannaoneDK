@@ -2408,7 +2408,6 @@ export const OpenAIAssistantsV2Extension = {
     const waitingContainer = document.createElement("div");
     waitingContainer.innerHTML = `
   <style>
-    /* Remove background for the thinking phase */
     .vfrc-message--extension-OpenAIAssistantsV2.thinking-phase {
       background: none !important;
     }
@@ -2429,9 +2428,7 @@ export const OpenAIAssistantsV2Extension = {
         rgb(153, 153, 153) 30%,
         rgb(153, 153, 153) 50%,
         rgb(232, 232, 232) 70%
-      )
-      0% 0% /
-        300% text;
+      ) 0% 0% / 300% text;
       animation: shimmer 6s linear infinite;
       text-align: left;
       margin-left: -10px;
@@ -2439,12 +2436,8 @@ export const OpenAIAssistantsV2Extension = {
     }
 
     @keyframes shimmer {
-      0% {
-        background-position: 300% 0;
-      }
-      100% {
-        background-position: -300% 0;
-      }
+      0% { background-position: 300% 0; }
+      100% { background-position: -300% 0; }
     }
   </style>
   <div class="waiting-animation-container">
@@ -2454,13 +2447,11 @@ export const OpenAIAssistantsV2Extension = {
 
     element.appendChild(waitingContainer);
 
-    // Remove the waiting container function
     const removeWaitingContainer = () => {
       if (element.contains(waitingContainer)) {
         element.removeChild(waitingContainer);
       }
 
-      // Restore the background when the message starts streaming
       if (messageElement) {
         messageElement.classList.remove("thinking-phase");
       }
@@ -2470,7 +2461,6 @@ export const OpenAIAssistantsV2Extension = {
     responseContainer.classList.add("response-container");
     element.appendChild(responseContainer);
 
-    // Function to handle retries
     const fetchWithRetries = async (url, options, retries = 3, delay = 1000) => {
       for (let attempt = 0; attempt < retries; attempt++) {
         try {
@@ -2491,7 +2481,6 @@ export const OpenAIAssistantsV2Extension = {
 
     try {
       let sseResponse;
-
       if (!threadId || !threadId.match(/^thread_/)) {
         // No threadId provided, or it doesn't match 'thread_...', so create a new one
         sseResponse = await fetchWithRetries("https://api.openai.com/v1/threads/runs", {
@@ -2592,6 +2581,16 @@ export const OpenAIAssistantsV2Extension = {
                     const cleanedText = removeCitations(partialAccumulator);
                     const formattedText = marked.parse(cleanedText);
                     responseContainer.innerHTML = formattedText;
+
+                    responseContainer.querySelectorAll("a").forEach((link) => {
+                      link.setAttribute("target", "_blank");
+                      link.setAttribute("rel", "noopener noreferrer");
+
+                      if (link.href.startsWith("mailto:")) {
+                        link.replaceWith(document.createTextNode(link.textContent));
+                      }
+                    });
+
                   } catch (e) {
                     console.error("Error parsing markdown:", e);
                   }
