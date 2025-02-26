@@ -94644,7 +94644,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     },
     y_e = document.currentScript.src.replace(
       "bundle.mjs",
-      "style.mT9rXO1h.css"
+      "style.css"
     );
   let V1;
   const T_e = () => ((V1 = y0(S5)), { shadowRoot: S5, reactRoot: V1 }),
