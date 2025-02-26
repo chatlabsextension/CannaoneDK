@@ -68,3 +68,17 @@ button.vfrc-button._1q15b0b0.c26d8x0._1q15b0b2.vfrc-launcher.f6dof81._1q15b0b0.c
   width: 48px;
   height: 48px;
 }
+
+.vfrc-proactive._6r9xee0._6r9xee1 
+  button.vfrc-button._1q15b0b0.c26d8x0._1q15b0b2._1q15b0b5._6r9xee5 {
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.vfrc-proactive._6r9xee0._6r9xee1 
+  button.vfrc-button._1q15b0b0.c26d8x0._1q15b0b2._1q15b0b5._6r9xee5 
+  .vfrc-icon._1t7e06e0._6r9xee6 svg {
+  width: 10px;  
+  height: 10px; 
+}
