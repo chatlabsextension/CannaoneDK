@@ -122,7 +122,7 @@
   position: relative;
 }
 
-.button.vfrc-button._1q15b0b0.c26d8x0._1q15b0b2.vfrc-launcher.f6dof81._1q15b0b0.c26d8x0._1q15b0b5:not(.f6dof82) {
+button.vfrc-button._1q15b0b0.c26d8x0._1q15b0b2.vfrc-launcher.f6dof81._1q15b0b0.c26d8x0._1q15b0b5:not(.f6dof82) {
   width: 64px;
   height: 64px;
   box-shadow: 0px 4px 4px rgba(0,0,0,0.45);
@@ -146,7 +146,3 @@
   width: 10px;  
   height: 10px; 
 }
-
-.f6dof80 {
-  color: #FFFFFF;
-}  
